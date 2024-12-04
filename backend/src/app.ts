@@ -8,6 +8,7 @@ import cors from 'cors';
 import AuthRoutes from './api/routes/auth.routes';
 import socketServer from './socket.config';
 import TournamentRoutes from './api/routes/tournament.routes';
+import path from 'path';
 
 // Load the envs based on current NODE_ENV
 dotenv.config({ path: `${process.cwd()}/.env` });
@@ -22,6 +23,7 @@ const app = new ExpressApplication(
     cookieParser(),
     express.json({ limit: '10kb' }),
     express.urlencoded({ extended: true, limit: '10kb' }),
+    express.static(path.join(__dirname, "/frontend/dist"))
   ],
   [AuthRoutes, TournamentRoutes]
 );
