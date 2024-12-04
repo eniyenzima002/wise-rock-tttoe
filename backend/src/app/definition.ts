@@ -7,6 +7,9 @@ import MetadataKeys from '../utils/metadata.keys';
 import IRouter from '../utils/router.interface.handler';
 
 class ExpressApplication {
+  get(arg0: string, arg1: (req: any, res: any) => void) {
+    throw new Error('Method not implemented.');
+  }
   private app: Application;
   private server;
 
@@ -19,7 +22,7 @@ class ExpressApplication {
     this.port = port;
     this.server = createServer(this.app);
 
-    // __init__
+    // __INIT__
     this.handleMiddlewares(middlewares);
     this.handleRoutesController(controllers);
     this.handleLogger();
@@ -31,6 +34,7 @@ class ExpressApplication {
     });
   }
 
+  // __INIT-Routes-Config__
   private handleRoutesController(controllers: any[]) {
     const info: Array<{ api: string; handler: string }> = [];
 

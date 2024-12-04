@@ -5,6 +5,9 @@
   "main": "app.js",
   "scripts": {
     "build": "tsc",
+    "build:prod": "tsc && npm install && prisma generate --schema=./backend/prisma/schema.prisma && npm install --prefix frontend && npm run build --prefix frontend",
+    "start:prod": "node backend/dist/src/app.renders.js",
+    
     "clear:build": "rimraf ./backend/dist",
     "lint": "eslint",
     "lint:fix": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
