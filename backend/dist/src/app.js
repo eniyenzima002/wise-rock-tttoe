@@ -18,7 +18,6 @@ const path_1 = __importDefault(require("path"));
 dotenv_1.default.config({ path: `${process.cwd()}/.env` });
 // dotenv.config({ path: `${process.cwd()}/.env.${process.env.NODE_ENV}` });
 const PORT = process.env.PORT || 4001;
-const __dirname = path_1.default.resolve();
 const app = new definition_1.default(PORT, [
     (0, cors_1.default)(),
     (0, cookie_parser_1.default)(),
