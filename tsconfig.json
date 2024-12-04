@@ -1,0 +1,17 @@
+{
+    "extends": "@tsconfig/node20/tsconfig.json",
+    "compilerOptions": {
+        "outDir": "./backend/dist",
+        "rootDir": "./backend",
+        "forceConsistentCasingInFileNames": true,
+        "declaration": true,
+        "sourceMap": true,
+        "allowSyntheticDefaultImports": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "skipDefaultLibCheck": true,
+        "incremental": true
+    },
+    "include": ["backend/src/**/*", "./test/**/*"],
+    "exclude": ["node_modules", "src", "frontend"]
+}
