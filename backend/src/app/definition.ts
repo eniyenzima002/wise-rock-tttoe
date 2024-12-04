@@ -1,4 +1,5 @@
 import express, { Application, Handler } from 'express';
+import path from "path";
 import { createServer } from 'http';
 import morgan from 'morgan';
 
@@ -7,10 +8,9 @@ import MetadataKeys from '../utils/metadata.keys';
 import IRouter from '../utils/router.interface.handler';
 
 class ExpressApplication {
-  get(arg0: string, arg1: (req: any, res: any) => void) {
-    throw new Error('Method not implemented.');
-  }
+
   private app: Application;
+  private __dirname;
   private server;
 
   constructor(
@@ -20,12 +20,15 @@ class ExpressApplication {
   ) {
     this.app = express();
     this.port = port;
+    this.__dirname = path.resolve();
     this.server = createServer(this.app);
 
     // __INIT__
     this.handleMiddlewares(middlewares);
     this.handleRoutesController(controllers);
     this.handleLogger();
+    this.handleDeployment();
+    
   }
 
   private handleMiddlewares(middlewaresArr: any[]) {
@@ -82,6 +85,15 @@ class ExpressApplication {
   private handleLogger() {
     if (process.env.NODE_ENV === 'development') {
       this.app.use(morgan('dev'));
+    }
+  }
+
+  private handleDeployment() {
+    if (process.env.NODE_ENV !== "development") {
+      this.app.use(express.static(path.join(__dirname, "/frontend/dist")));
+      this.app.get("*", (req, res) => {
+        res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+      });
     }
   }
 

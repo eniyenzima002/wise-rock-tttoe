@@ -1,8 +1,6 @@
-import { ConnectedSocket, MessageBody, OnConnect, OnDisconnect, OnMessage, SocketController, SocketIO } from "socket-controllers";
+import { ConnectedSocket, OnConnect, OnDisconnect, SocketController, SocketIO } from "socket-controllers";
 import { Socket, Server } from "socket.io";
 import { Service } from "typedi";
-import  getActivePlayer  from "../middleware/get.active.player";
-import prisma from "../db/prisma";
 
 
 @SocketController()
@@ -12,7 +10,7 @@ export class ConnectUser {
     player: string | { id: string; username: string; } | { error: string; logout: boolean; } | null | any;
 
     @OnConnect()
-    async onConnection(@ConnectedSocket() socket: Socket,
+    onConnection(@ConnectedSocket() socket: Socket,
         @SocketIO() io: Server
     ) {
         console.log("New Socket player connected: ", socket.id);

@@ -6,8 +6,7 @@
   "scripts": {
     "build": "tsc",
     "build:prod": "tsc && npm install && prisma generate --schema=./backend/prisma/schema.prisma && npm install --prefix frontend && npm run build --prefix frontend",
-    "start:prod": "node backend/dist/src/app.renders.js",
-    
+    "start:prod": "node backend/dist/src/app.js",
     "clear:build": "rimraf ./backend/dist",
     "lint": "eslint",
     "lint:fix": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
@@ -15,11 +14,11 @@
     "check-types": "tsc --pretty --noEmit",
     "check-format": "prettier --check",
     "build:watch": "tsc --watch",
-    "build:dev-js": "nodemon backend/dist/src/app.renders.js",
+    "build:dev-js": "nodemon backend/dist/src/app.js",
     "start:dev": "cross-env NODE_ENV=development concurrently \"npm:build:*\"",
-    "start:production-js": "cross-env NODE_ENV=production node backend/src/app.renders.js",
-    "start:development-js": "cross-env NODE_ENV=development node backend/dist/src/app.renders.js",
-    "dev:backend": "nodemon --watch backend/src --exec ts-node backend/src/app.renders.ts",
+    "start:production-js": "cross-env NODE_ENV=production node backend/src/app.js",
+    "start:development-js": "cross-env NODE_ENV=development node backend/dist/src/app.js",
+    "dev:backend": "nodemon --watch backend/src --exec ts-node backend/src/app.ts",
     "dev:frontend": "npm run dev --prefix frontend",
     "fullstack": "concurrently \"npm:dev:*\""
   },
