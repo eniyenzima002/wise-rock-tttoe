@@ -15,7 +15,6 @@ dotenv.config({ path: `${process.cwd()}/.env` });
 // dotenv.config({ path: `${process.cwd()}/.env.${process.env.NODE_ENV}` });
 
 const PORT = process.env.PORT || 4001;
-const __dirname = path.resolve();
 
 const app = new ExpressApplication(
   PORT,
