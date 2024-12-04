@@ -6,7 +6,7 @@ class SocketService {
     connect(url: string): Promise<Socket<typeof DefaultEventsMap, typeof DefaultEventsMap>> {
         
         return new Promise((rs, rj) => {
-            this.socket = io(url, {});
+            this.socket = io(url, {transports: ['websocket'],});
 
             if (!this.socket) return rj();
 
