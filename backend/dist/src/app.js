@@ -23,7 +23,7 @@ const app = new definition_1.default(PORT, [
     (0, cookie_parser_1.default)(),
     express_1.default.json({ limit: '10kb' }),
     express_1.default.urlencoded({ extended: true, limit: '10kb' }),
-    express_1.default.static(path_1.default.join(__dirname, "/frontend/dist"))
+    express_1.default.static(path_1.default.join(process.cwd(), "/frontend/dist"))
 ], [auth_routes_1.default, tournament_routes_1.default]);
 const server = app.startServer();
 (0, socket_config_1.default)(server);

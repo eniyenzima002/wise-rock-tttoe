@@ -23,7 +23,7 @@ const app = new ExpressApplication(
     cookieParser(),
     express.json({ limit: '10kb' }),
     express.urlencoded({ extended: true, limit: '10kb' }),
-    express.static(path.join(__dirname, "/frontend/dist"))
+    express.static(path.join(process.cwd(), "/frontend/dist"))
   ],
   [AuthRoutes, TournamentRoutes]
 );
