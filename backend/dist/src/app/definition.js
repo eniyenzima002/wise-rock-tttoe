@@ -62,7 +62,7 @@ class ExpressApplication {
         if (process.env.NODE_ENV !== "development") {
             this.app.use(express_1.default.static(path_1.default.join(__dirname, "/frontend/dist")));
             this.app.get("*", (req, res) => {
-                res.sendFile(path_1.default.join(process.cwd(), "frontend", "dist", "index.html"));
+                res.sendFile(path_1.default.join(__dirname, "frontend", "dist", "index.html"));
             });
         }
     }
